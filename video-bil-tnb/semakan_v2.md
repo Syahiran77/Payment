@@ -24,9 +24,13 @@ Transkrip penuh: `rujukan/transkrip_prof_jj.md`. Masa dalam (kurungan) merujuk m
 ## Dikekalkan sebagai tambahan kita [T]
 
 - "Arus bocor? Panggil pendawai": Prof JJ sebut arus bocor sebagai kemungkinan sahaja, tetapi tidak beri langkah. Nasihat ini munasabah dan selamat.
-- "Meter rosak → ditukar" (video pertama): logik, tapi tidak disebut secara langsung. Sahkan dengan TNB.
 
-## ⚠️ Perlu disahkan sebelum terbit
+## ✅ Disahkan oleh pengguna (v2.1)
 
-- **Had 800 kWh vs 600 kWh**: Prof JJ (dan grafik videonya) sebut 800 kWh. Maklumat yang saya tahu ialah domestik ≤600 kWh dikecualikan daripada AFA. Semak dengan TNB / Suruhanjaya Tenaga.
-- Nombor Careline TNB.
+- **Had AFA = 800 kWh**, berkuat kuasa 1 September 2026 (dinaikkan daripada 600 kWh). Angka Prof JJ betul. Keraguan "600 kWh" dalam v2 ialah **silap saya** kerana guna maklumat lama, dan sudah dibuang.
+- **Meter rosak ditukar kepada meter baharu**: langkah SOP dalam video pertama betul.
+
+## ⚠️ Masih perlu disahkan
+
+- Nombor Careline TNB (tidak digunakan dalam video).
+- Kadar AFA bulan semasa.
