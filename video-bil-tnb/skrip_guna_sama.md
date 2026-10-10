@@ -1,24 +1,23 @@
-# Skrip — "Guna Sama Je, Kenapa Bil Naik?" (30 s)
+# Skrip — "Guna Sama Je, Kenapa Bil Naik?" (30 s) · v2
 
-**Rujukan isi:** video Facebook temu bual 8 minit "Guna sama je, apahal bil TNB naik?" (ML Studios).
-Isi diringkaskan daripada slaid dan grafik video itu sahaja: kWh, AFA, arus bocor, smart meter / SIRIM,
-analogi dacing, graf myTNB dan aduan TNB. Audio tidak dapat ditranskrip, jadi **semak semula dengan video asal**.
-Kita tidak guna klip, wajah penceramah atau logo daripada video itu.
+**Sumber:** audio Prof JJ, *Bill Tinggi, Meter Laju* (transkrip: `rujukan/transkrip_prof_jj.md`).
+Setiap babak di bawah dirujuk kepada minit dalam audio. **[T]** = tambahan kita, bukan daripada Prof JJ.
 
-**Watak:** *Pak Bil*, kartun retro hitam-putih asal (diilhamkan oleh kartun "BILL" di jalur bawah video).
-Pose: terkejut (masalah) · tunjuk (fakta) · gembira (solusi/CTA). Lihat `output/pak_bil_watak.png`.
+**Watak:** *Pak Bil*. Pose: terkejut (masalah) · tunjuk (fakta) · gembira (solusi/CTA). Lihat `output/pak_bil_watak.png`.
 
-| Masa | Babak | Suara latar (VO) | Teks skrin | Pose |
+| Masa | Babak | Suara latar (VO) | Teks skrin | Sumber |
 |---|---|---|---|---|
-| 0–3 s | **HOOK** | "Guna sama je… kenapa bil naik?!" | Guna sama je, **kenapa bil naik?!** | Terkejut |
-| 3–7 s | **RELATE** | "Aircon sama, peti sejuk sama, tapi bil melonjak. Ramai tak tahu, ada 4 sebab utama." | Aircon sama. Peti sejuk sama. Bil? **Melonjak.** | Tunjuk |
-| 7–11 s | Sebab 1 | "Bil dikira ikut kWh, bukan ikut rasa. Pasang aircon lebih lama, kWh terus naik." | 1 kWh = 1000 W × 1 jam | Tunjuk |
-| 11–15 s | Sebab 2 | "Caj pelarasan bahan api, AFA, berubah setiap bulan. Bila rebat mengecil, bil naik walaupun guna sama." | Rebat kecil = bil naik | Terkejut |
-| 15–19 s | Sebab 3 | "Arus bocor: peti sejuk lama, pam air atau wayar rosak boleh buat elektrik lari ke bumi." | Peti sejuk lama · Pam air · Wayar rosak | Terkejut |
-| 19–23 s | Sebab 4 | "Meter disyaki tak tepat? Macam dacing di pasar, meter pun boleh diperiksa. Smart meter diluluskan SIRIM." | Smart meter lulus SIRIM | Tunjuk |
-| 23–27 s | **SOLUSI** | "Jadi: pantau kWh harian dalam myTNB, panggil pendawai bertauliah untuk semak arus bocor, dan lapor TNB jika meter disyaki rosak." | 3 cip hijau ✓ | Gembira |
-| 27–30 s | **CTA** | "Share pada kawan yang selalu bising bil naik! Simpan dan follow." | Share pada yang selalu bising **bil naik!** | Gembira |
+| 0–3 s | **HOOK** | "Guna sama je… kenapa bil naik?!" | Guna sama je, **kenapa bil naik?!** | 00:26 |
+| 3–7 s | **Tengok kWh** | "Jangan tengok RM dulu. Tengok kWh, iaitu unit tenaga yang kita pakai. Banding bulan ini dengan bulan lepas." | Jangan tengok RM dulu. Tengok **kWh!** | 00:38–01:11, 03:28 |
+| 7–11 s | **Kes 1: bawah 800 kWh** | "Kalau guna bawah 800 kWh dan kWh sama, bil wajib sama. Kalau berbeza, bawa dua-dua bil dan buat aduan kepada TNB." | kWh sama = bil **wajib** sama | 01:24–01:44 |
+| 11–15 s | **Kes 2: lebih 800 kWh** | "Kalau lebih 800 kWh, bil ikut AFA, iaitu pelarasan kos arang batu dan gas, yang berubah setiap bulan. AFA naik, bil naik. AFA turun, bil turun." | Bil ikut **AFA**: kos arang batu & gas | 01:45–03:22 |
+| 15–19 s | **Ujian mudah** | "Tutup semua suis. Kalau meter masih bergerak, mungkin ada arus bocor, atau meter itu sendiri rosak." | Tutup semua suis. Meter masih **bergerak?** | 00:00–00:25, 04:34–05:08 |
+| 19–23 s | **Mitos smart meter** | "Smart meter buat bil naik? Tidak. Meter ditentukur macam dacing di pasar. Malah ia beri data penggunaan setiap 30 minit." | Smart meter buat bil naik? **TIDAK.** | 05:28–08:13 |
+| 23–27 s | **SOLUSI** | "Jadi: semak bacaan setiap 30 minit di portal web myTNB. Kalau ada arus bocor, panggil pendawai elektrik. Dan TNB boleh datang semak meter anda tanpa caj." | 3 cip hijau ✓ | 06:03–06:39 · [T] pendawai · 07:47–07:56 |
+| 27–30 s | **CTA** | "Share pada kawan yang selalu bising bil naik! Simpan dan follow." | Share pada yang selalu bising **bil naik!** | — |
 
-**Kapsyen:** Guna sama je, kenapa bil naik? 🤔 4 sebab yang ramai tak tahu + apa nak buat. Tag kawan yang selalu bising bil letrik! ⚡ #BilElektrik #AFA #TipsJimat
+**Kapsyen:** Guna sama je, kenapa bil naik? 🤔 Tengok kWh dulu, bukan RM! Ini cara semak sendiri, dan kenapa smart meter BUKAN puncanya. Tag kawan yang selalu bising bil letrik! ⚡ #BilElektrik #AFA #SmartMeter
 
-⚠️ Sahkan kadar AFA semasa, nombor Careline TNB dan prosedur pemeriksaan meter sebelum terbit.
+⚠️ **Sahkan sebelum terbit:**
+- **Had 800 kWh:** Prof JJ sebut 800 kWh (grafik video asal pun tulis "BAWAH 800KWH"). Tapi maklumat yang saya tahu ialah pengguna domestik **600 kWh dan ke bawah** dikecualikan daripada AFA. Semak angka terkini di laman TNB / Suruhanjaya Tenaga sebelum terbit.
+- Kadar AFA bulan semasa.

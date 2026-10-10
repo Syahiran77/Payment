@@ -2,9 +2,9 @@
 
 Gaya: lihat `style_guide.md`. Animasi contoh: `output/bil_tnb_30s.mp4`.
 
-> ⚠️ **Sahkan dengan TNB sebelum terbit:** nombor Careline (15454 / 1-300-88-5454), langkah permohonan
-> pemeriksaan/penukaran meter dalam app myTNB, dan sama ada ada caj jika meter didapati tepat.
-> Langkah SOP di bawah ialah ringkasan umum, bukan teks rasmi TNB.
+> ✅ **Disemak dengan audio Prof JJ (v2):** semakan meter oleh TNB **tanpa caj** (07:56), bacaan 30 minit di portal web (06:07),
+> bandingkan kWh, bukan RM (03:28). Lihat `semakan_v2.md`.
+> ⚠️ Masih perlu disahkan dengan TNB: nombor Careline, dan langkah "meter rosak → ditukar" (Prof JJ tidak sebut secara langsung).
 
 ---
 
@@ -14,10 +14,10 @@ Gaya: lihat `style_guide.md`. Animasi contoh: `output/bil_tnb_30s.mp4`.
 |---|---|---|---|---|
 | 0–3 s | **HOOK** | "Bil letrik bulan ni tiba-tiba RM387? Tunggu, jangan bayar dulu!" | Bil elektrik tiba-tiba **RM387?!** / *Jangan bayar dulu…* | Angka merah "slam", watak terkejut |
 | 3–8 s | **RELATE** | "Rumah sama, guna barang sama… tapi bil naik mendadak. Rasa macam kena tipu, kan?" | Rumah sama. Guna sama. Tapi bil **naik?** | Cip perkakas: Aircon, Peti Sejuk, Water Heater, Mesin Basuh, Pam Air |
-| 8–11 s | **SEMAK 1** | "Satu: banding nombor pada meter dengan bacaan dalam bil." | ① Banding bacaan meter vs bil | Bingkai telefon: SS bil (bacaan meter) |
-| 11–14 s | **SEMAK 2** | "Dua: buka app myTNB, tengok graf kWh. Ada lonjakan luar biasa?" | ② Semak graf kWh di myTNB | Bingkai telefon: SS graf penggunaan |
-| 14–17 s | **SEMAK 3** | "Tiga: tutup semua suis. Meter masih bergerak? Mungkin meter rosak!" | ③ Tutup semua suis → meter masih bergerak? | Cip "Meter rosak?" merah |
-| 17–25 s | **SOLUSI (SOP)** | "Jangan risau. Buat aduan di myTNB atau Careline 15454. TNB akan jadualkan lawatan, juruteknik uji dan tukar meter, dan bil diselaraskan kalau memang meter bermasalah." | SOP Tukar Meter TNB: 1 Lapor (myTNB / 15454) · 2 TNB jadual lawatan · 3 Uji & tukar meter · 4 Bil diselaras | 4 cip bernombor masuk satu-satu, tanda ✓ hijau |
+| 8–11 s | **SEMAK 1** | "Satu: jangan tengok RM dulu. Banding kWh bulan ini dengan bulan lepas." | ① Banding kWh bulan ini vs lepas | Bingkai telefon: SS bil (bacaan meter) |
+| 11–14 s | **SEMAK 2** | "Dua: smart meter rekod penggunaan setiap 30 minit. App myTNB tunjuk harian; portal web myTNB tunjuk setiap 30 minit. Ada lonjakan masa tiada orang di rumah?" | ② Semak bacaan 30 min di myTNB | Bingkai telefon: SS graf penggunaan |
+| 14–17 s | **SEMAK 3** | "Tiga: tutup semua suis. Meter masih bergerak? Mungkin ada arus bocor, atau meter rosak!" | ③ Tutup semua suis → meter masih bergerak? | Cip "Meter rosak?" merah |
+| 17–25 s | **SOLUSI (SOP)** | "Jangan risau. Hubungi TNB dan tunjuk bil dua bulan. TNB akan datang semak meter, tanpa sebarang caj. Kalau meter memang rosak, ia ditukar." | SOP Tukar Meter TNB: 1 Hubungi TNB, tunjuk 2 bil · 2 TNB datang semak meter · 3 Meter rosak → ditukar · 4 Semakan meter tanpa caj | 4 cip bernombor masuk satu-satu, tanda ✓ hijau |
 | 25–30 s | **CTA** | "Simpan video ni, kongsi dengan family. Follow untuk tips jimat bil!" | **Simpan & Kongsi!** | Cip Simpan / Kongsi / Follow, watak tunjuk |
 
 **Kapsyen post (cadangan):**
