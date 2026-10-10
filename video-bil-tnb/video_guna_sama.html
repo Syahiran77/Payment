@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>Guna Sama Bil Naik</title>
+<style>
+  :root {
+    --bg: #F7BD23; --ink: #151515; --paper: #fff; --alert: #E5432D; --ok: #1E9E5A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+  body { font-family: "Inter", "Inter Display", sans-serif; color: var(--ink); }
+  #stage {
+    position: relative; width: 1080px; height: 1920px; overflow: hidden;
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(rgba(0,0,0,.06) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(0,0,0,.06) 2px, transparent 2px);
+    background-size: 60px 60px;
+  }
+  .abs { position: absolute; }
+  .brand {
+    left: 64px; top: 300px; display: flex; align-items: center; gap: 18px;
+    font-weight: 800; font-size: 44px; letter-spacing: -.01em;
+  }
+  .brand .box {
+    width: 64px; height: 64px; border: 5px solid var(--ink); border-radius: 14px;
+    display: grid; place-items: center; font-size: 34px; font-weight: 900;
+  }
+  .doodle { right: 10px; top: 160px; }
+
+  .scene { position: absolute; inset: 0; display: none; }
+  .head {
+    position: absolute; left: 64px; right: 64px;
+    font-weight: 900; letter-spacing: -.035em; line-height: 1.02; font-size: 112px;
+  }
+  .w { display: inline-block; transform-origin: 50% 80%; margin-right: .22em; }
+  .key { font-size: 1.28em; }
+  .red { color: var(--alert); }
+  .green { color: var(--ok); }
+  .sub { font-weight: 800; font-size: 54px; letter-spacing: -.02em; }
+
+  .chip {
+    position: absolute; display: inline-flex; align-items: center; gap: 16px;
+    background: var(--paper); border: 5px solid var(--ink); border-radius: 999px;
+    padding: 18px 36px; font-weight: 800; font-size: 42px; white-space: nowrap;
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+  .chip .ico {
+    width: 40px; height: 40px; border: 4px solid var(--ink); border-radius: 10px;
+    display: grid; place-items: center; font-size: 24px; font-weight: 900; flex: none;
+  }
+  .chip.num .ico { border-radius: 50%; background: var(--ink); color: var(--paper); width: 54px; height: 54px; font-size: 30px; }
+  .chip.alert { background: var(--alert); color: var(--paper); }
+  .chip.alert .ico { border-color: var(--paper); }
+  .chip.ok { background: var(--ok); color: var(--paper); }
+  .chip.ok .ico { border-color: var(--paper); }
+  .tick { color: var(--ok); font-weight: 900; font-size: 46px; margin-left: 6px; }
+
+  .phone {
+    position: absolute; width: 470px; height: 900px; border: 14px solid var(--ink);
+    border-radius: 56px; background: var(--paper); overflow: hidden;
+    box-shadow: 12px 12px 0 var(--ink);
+  }
+  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .phone .ph {
+    position: absolute; inset: 0; display: none; flex-direction: column; justify-content: center;
+    align-items: center; gap: 18px; text-align: center; padding: 40px;
+    background: repeating-linear-gradient(45deg, #f1f1f1 0 26px, #e4e4e4 26px 52px);
+    font-weight: 900; font-size: 40px; line-height: 1.15;
+  }
+  .phone .ph small { font-weight: 700; font-size: 28px; opacity: .7; }
+  .phone.missing img { display: none; }
+  .phone.missing .ph { display: flex; }
+
+  .char {
+    position: absolute; right: -20px; bottom: -10px; width: 600px; height: 900px;
+    transform-origin: 50% 100%;
+    filter: drop-shadow(10px 0 0 #fff) drop-shadow(-10px 0 0 #fff)
+            drop-shadow(0 10px 0 #fff) drop-shadow(0 -10px 0 #fff);
+  }
+  .char svg { width: 100%; height: 100%; overflow: visible; }
+  .arm-point, .arm-cheek, .arm-chin, .mouth-o, .smile { display: none; }
+  .pose-point .arm-point, .pose-point .smile { display: block; }
+  .pose-think .arm-chin, .pose-think .smile { display: block; }
+  .pose-shock .arm-cheek, .pose-shock .mouth-o { display: block; }
+  .pose-shock .brow { transform: translateY(-10px); }
+
+  .note { font-weight: 700; font-size: 26px; opacity: .6; }
+
+  /* Watak Pak Bil */
+  .p-shock, .p-point, .p-happy, .m-smile, .m-shock, .m-grin, .sweat { display: none; }
+  .pose-shock .p-shock, .pose-shock .m-shock, .pose-shock .sweat { display: inline; }
+  .pose-point .p-point, .pose-point .m-smile { display: inline; }
+  .pose-happy .p-happy, .pose-happy .m-grin { display: inline; }
+  .pose-shock .brow { transform: translateY(-14px); }
+  .pose-shock .pupil { transform: scale(.7); transform-origin: 200px 254px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="abs brand"><div class="box">✦</div><span>[Logo Anda]</span></div>
+  <svg class="abs doodle" width="300" height="230" viewBox="0 0 300 230" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round">
+    <path d="M30 120 L150 20"/><path d="M60 170 L210 40"/><path d="M110 200 L270 70"/>
+    <path d="M60 30 L200 200"/><path d="M130 20 L270 180"/><path d="M20 90 L240 110"/>
+  </svg>
+
+  <!-- 1 HOOK 0–3 -->
+  <div class="scene" data-t0="0" data-t1="3">
+    <div class="head" style="top:520px" data-words="0.05">Guna sama je,</div>
+    <div class="head red" style="top:660px;font-size:150px" data-slam="0.6">kenapa bil naik?!</div>
+    <div class="char pose-shock" data-char="0.1"></div>
+  </div>
+
+  <!-- 2 RELATE 3–7 -->
+  <div class="scene" data-t0="3" data-t1="7">
+    <div class="head" style="top:460px;font-size:96px" data-words="0">Aircon sama. Peti sejuk sama.</div>
+    <div class="head" style="top:690px;font-size:96px" data-words="0.8">Bil? <span class="key red">Melonjak.</span></div>
+    <div class="chip" style="left:64px;top:900px" data-pop="1.7" data-rot="-3" data-float><span class="ico">?</span>Ramai tak tahu</div>
+    <div class="chip ok" style="left:90px;top:1040px" data-slam="2.3" data-rot="2"><span class="ico">4</span>4 sebab utama</div>
+    <div class="char pose-point" data-char="0.1"></div>
+  </div>
+
+  <!-- 3 SEBAB 1: kWh 7–11 -->
+  <div class="scene" data-t0="7" data-t1="11">
+    <div class="chip num" style="left:64px;top:450px" data-pop="0" data-rot="-2"><span class="ico">1</span>Bil dikira ikut kWh</div>
+    <div class="head" style="top:620px;font-size:92px" data-words="0.3">Bukan ikut <span class="key">“rasa”</span> guna sama</div>
+    <div class="chip" style="left:64px;top:960px" data-pop="1.3" data-rot="2" data-float><span class="ico">⚡</span>1 kWh = 1000 W × 1 jam</div>
+    <div class="chip alert" style="left:64px;top:1100px" data-pop="1.8" data-rot="-2" data-float><span class="ico">❄</span>Aircon lebih lama = kWh ↑</div>
+    <div class="char pose-point" data-char="0.1"></div>
+  </div>
+
+  <!-- 4 SEBAB 2: AFA 11–15 -->
+  <div class="scene" data-t0="11" data-t1="15">
+    <div class="chip num" style="left:64px;top:450px" data-pop="0" data-rot="2"><span class="ico">2</span>Caj / rebat AFA</div>
+    <div class="head" style="top:620px;font-size:88px" data-words="0.3">Pelarasan bahan api <span class="key">berubah</span> setiap bulan</div>
+    <div class="chip alert" style="left:64px;top:1000px" data-slam="1.5" data-rot="-3"><span class="ico">↓</span>Rebat kecil = bil naik</div>
+    <div class="chip" style="left:64px;top:1140px" data-pop="2.2" data-rot="2" data-float><span class="ico">⌕</span>Semak kadar AFA</div>
+    <div class="char pose-shock" data-char="0.1"></div>
+  </div>
+
+  <!-- 5 SEBAB 3: arus bocor 15–19 -->
+  <div class="scene" data-t0="15" data-t1="19">
+    <div class="chip num" style="left:64px;top:450px" data-pop="0" data-rot="-2"><span class="ico">3</span>Arus bocor</div>
+    <div class="head" style="top:620px;font-size:88px" data-words="0.3">Elektrik “lari” ke <span class="key">bumi</span> tanpa anda sedar</div>
+    <div class="chip" style="left:64px;top:1000px" data-pop="1.4" data-rot="-3" data-float><span class="ico">▤</span>Peti sejuk lama</div>
+    <div class="chip" style="left:120px;top:1130px" data-pop="1.55" data-rot="2" data-float><span class="ico">≈</span>Pam air</div>
+    <div class="chip" style="left:64px;top:1260px" data-pop="1.7" data-rot="-2" data-float><span class="ico">⌁</span>Wayar rosak</div>
+    <div class="char pose-shock" data-char="0.1"></div>
+  </div>
+
+  <!-- 6 SEBAB 4: meter 19–23 -->
+  <div class="scene" data-t0="19" data-t1="23">
+    <div class="chip num" style="left:64px;top:450px" data-pop="0" data-rot="2"><span class="ico">4</span>Meter disyaki tak tepat</div>
+    <div class="head" style="top:620px;font-size:92px" data-words="0.3">Macam <span class="key">dacing</span> di pasar…</div>
+    <div class="head sub" style="top:860px;width:560px" data-words="1.2">meter pun boleh diperiksa.</div>
+    <div class="chip" style="left:64px;top:1060px" data-pop="2.0" data-rot="-2" data-float><span class="ico">✓</span>Smart meter lulus SIRIM</div>
+    <div class="char pose-point" data-char="0.1"></div>
+  </div>
+
+  <!-- 7 SOLUSI 23–27 -->
+  <div class="scene" data-t0="23" data-t1="27">
+    <div class="head" style="top:440px" data-words="0">Apa nak <span class="key">buat?</span></div>
+    <div class="chip ok" style="left:64px;top:650px" data-pop="0.5" data-rot="-2"><span class="ico">1</span>Pantau kWh harian di myTNB</div>
+    <div class="chip ok" style="left:64px;top:800px" data-pop="1.3" data-rot="2"><span class="ico">2</span>Panggil pendawai bertauliah</div>
+    <div class="chip ok" style="left:64px;top:950px" data-pop="2.1" data-rot="-2"><span class="ico">3</span>Lapor TNB: myTNB / 15454</div>
+    <div class="char pose-happy" data-char="0.1" style="width:480px;height:720px"></div>
+  </div>
+
+  <!-- 8 CTA 27–30 -->
+  <div class="scene" data-t0="27" data-t1="30.01">
+    <div class="head" style="top:500px" data-words="0">Share pada yang</div>
+    <div class="head" style="top:625px" data-slam="0.35">selalu bising <span class="key red">bil naik!</span></div>
+    <div class="chip" style="left:80px;top:960px" data-pop="0.9" data-rot="-3" data-float><span class="ico">⌑</span>Simpan</div>
+    <div class="chip" style="left:120px;top:1100px" data-pop="1.05" data-rot="2" data-float><span class="ico">↗</span>Kongsi</div>
+    <div class="chip" style="left:70px;top:1240px" data-pop="1.2" data-rot="-2" data-float><span class="ico">+</span>Follow</div>
+    <div class="abs note" style="left:64px;top:1420px">*Sahkan kadar terkini dengan TNB</div>
+    <div class="char pose-happy" data-char="0"></div>
+  </div>
+</div>
+
+<template id="char-tpl">
+<svg viewBox="0 0 400 600">
+  <g stroke="#151515" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+  <!-- badan: kot hitam, kemeja putih, tali leher kupu-kupu -->
+  <path d="M60 600 C60 470 115 405 200 400 C285 405 340 470 340 600 Z" fill="#151515"/>
+  <path d="M160 405 L200 530 L240 405 Z" fill="#fff"/>
+  <path d="M160 405 L185 470 L150 450 Z M240 405 L215 470 L250 450 Z" fill="#151515" stroke="#fff" stroke-width="4"/>
+  <path d="M200 425 L172 410 L172 442 Z M200 425 L228 410 L228 442 Z" fill="#151515"/>
+  <rect x="148" y="350" width="104" height="62" rx="20" fill="#fff"/>
+  <!-- telinga & kepala -->
+  <ellipse cx="108" cy="262" rx="20" ry="28" fill="#fff"/><ellipse cx="292" cy="262" rx="20" ry="28" fill="#fff"/>
+  <ellipse cx="200" cy="255" rx="94" ry="112" fill="#fff"/>
+  <!-- rambut sikat belakang dengan jambul -->
+  <path d="M106 240 C92 150 150 112 212 116 C275 120 312 160 296 242 C286 196 258 176 226 178 C238 150 205 140 182 160 C150 172 122 196 106 240 Z" fill="#151515"/>
+  </g>
+  <!-- kening -->
+  <g class="brow" stroke="#151515" stroke-width="11" stroke-linecap="round" fill="none">
+    <path d="M140 205 Q162 192 184 202"/><path d="M216 202 Q238 192 260 205"/>
+  </g>
+  <!-- mata -->
+  <g stroke="#151515" stroke-width="6" fill="#fff">
+    <ellipse class="eye" cx="165" cy="248" rx="23" ry="31"/><ellipse class="eye" cx="235" cy="248" rx="23" ry="31"/>
+  </g>
+  <g class="pupil" fill="#151515"><ellipse cx="170" cy="254" rx="10" ry="15"/><ellipse cx="240" cy="254" rx="10" ry="15"/></g>
+  <!-- hidung -->
+  <ellipse cx="200" cy="292" rx="17" ry="13" fill="#fff" stroke="#151515" stroke-width="6"/>
+  <!-- mulut -->
+  <path class="m-smile" d="M160 318 Q200 352 240 318" fill="none" stroke="#151515" stroke-width="8" stroke-linecap="round"/>
+  <g class="m-shock"><ellipse cx="200" cy="330" rx="22" ry="27" fill="#151515"/><ellipse cx="200" cy="344" rx="12" ry="8" fill="#E5432D"/></g>
+  <path class="m-grin" d="M152 312 Q200 372 248 312 Z" fill="#151515" stroke="#151515" stroke-width="6" stroke-linejoin="round"/>
+  <!-- titik peluh biru (aksen dari video rujukan) -->
+  <path class="sweat" d="M318 150 C336 178 344 192 344 204 A26 26 0 0 1 292 204 C292 192 300 178 318 150 Z" fill="#3BA7E8" stroke="#151515" stroke-width="6"/>
+
+  <!-- POSE: terkejut pegang bil panjang -->
+  <g class="p-shock" transform="translate(0 40)" stroke="#151515" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M90 480 C70 430 95 380 128 352" fill="none" stroke-width="34"/>
+    <path d="M310 480 C330 430 305 380 272 352" fill="none" stroke-width="34"/>
+    <path d="M120 340 L280 340 L280 560 C280 600 240 600 240 575 C240 555 262 552 268 566 L120 566 Z" fill="#fff" stroke-width="7"/>
+    <text x="200" y="400" text-anchor="middle" font-family="Inter" font-weight="900" font-size="48" fill="#151515" stroke="none">BIL</text>
+    <g stroke-width="6"><path d="M145 430 H255 M145 458 H230 M145 486 H255 M145 514 H215"/></g>
+    <circle cx="128" cy="346" r="24" fill="#fff" stroke-width="7"/><circle cx="272" cy="346" r="24" fill="#fff" stroke-width="7"/>
+  </g>
+  <!-- POSE: tunjuk ke atas -->
+  <g class="p-point" stroke="#151515" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M100 480 C60 410 62 330 82 262" fill="none" stroke-width="34"/>
+    <rect x="70" y="150" width="26" height="80" rx="13" fill="#fff" stroke-width="7"/>
+    <circle cx="86" cy="250" r="28" fill="#fff" stroke-width="7"/>
+  </g>
+  <!-- POSE: ibu jari ke atas -->
+  <g class="p-happy" stroke="#151515" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300 480 C345 440 352 390 340 360" fill="none" stroke-width="34"/>
+    <rect x="322" y="268" width="28" height="70" rx="14" fill="#fff" stroke-width="7"/>
+    <rect x="304" y="320" width="66" height="62" rx="22" fill="#fff" stroke-width="7"/>
+  </g>
+</svg>
+</template>
+
+<script>
+  // --- Enjin animasi deterministik: render(t) melukis frame pada masa t (saat) ---
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const backOut = p => { const c = 1.9; p -= 1; return 1 + (c + 1) * p * p * p + c * p * p; };
+  const tpl = document.getElementById('char-tpl').innerHTML;
+  document.querySelectorAll('[data-char]').forEach(el => el.innerHTML = tpl);
+
+  // pecah tajuk kepada perkataan (kekalkan span .key)
+  document.querySelectorAll('[data-words]').forEach(el => {
+    const parts = [];
+    el.childNodes.forEach(n => {
+      if (n.nodeType === 3) n.textContent.split(/\s+/).filter(Boolean).forEach(w => parts.push({ text: w }));
+      else parts.push({ node: n });
+    });
+    el.innerHTML = '';
+    parts.forEach(p => {
+      const s = document.createElement('span'); s.className = 'w';
+      if (p.node) { s.appendChild(p.node); } else s.textContent = p.text;
+      el.appendChild(s);
+    });
+  });
+
+  // gambar tangkapan skrin: guna jika wujud, jika tidak tunjuk kotak GANTI
+  const imgs = [...document.querySelectorAll('img[data-src]')];
+  window.assetsReady = Promise.all(imgs.map(img => new Promise(res => {
+    img.onload = () => res(); img.onerror = () => { img.closest('.phone').classList.add('missing'); res(); };
+    img.src = img.dataset.src;
+  })));
+
+  const scenes = [...document.querySelectorAll('.scene')];
+
+  function pop(el, lt, d, rot) {
+    const p = clamp((lt - d) / 0.3);
+    const s = lt < d ? 0 : backOut(p);
+    el.style.opacity = lt < d ? 0 : 1;
+    return `scale(${s}) rotate(${rot}deg)`;
+  }
+  function slam(el, lt, d, rot) {
+    if (lt < d) { el.style.opacity = 0; return 'scale(0)'; }
+    el.style.opacity = 1;
+    const p = clamp((lt - d) / 0.2);
+    const s = 1.8 - 0.8 * p;
+    const shake = lt - d < 0.45 && p >= 1 ? Math.sin((lt - d) * 70) * 8 * (1 - (lt - d) / 0.45) : 0;
+    return `translateX(${shake}px) scale(${s}) rotate(${rot}deg)`;
+  }
+
+  window.render = function (t) {
+    scenes.forEach((sc, si) => {
+      const t0 = +sc.dataset.t0, t1 = +sc.dataset.t1;
+      const on = t >= t0 && t < t1;
+      sc.style.display = on ? 'block' : 'none';
+      if (!on) return;
+      const lt = t - t0;
+
+      sc.querySelectorAll('[data-words]').forEach(el => {
+        const d = +el.dataset.words;
+        [...el.children].forEach((w, i) => { w.style.transform = pop(w, lt, d + i * 0.08, 0); });
+      });
+      sc.querySelectorAll('[data-pop]').forEach((el, i) => {
+        const rot = +(el.dataset.rot || 0);
+        let tr = pop(el, lt, +el.dataset.pop, rot);
+        if (el.hasAttribute('data-float')) tr = `translateY(${Math.sin(lt * Math.PI + i * 1.7) * 5}px) ` + tr;
+        el.style.transform = tr;
+      });
+      sc.querySelectorAll('[data-slam]').forEach(el => {
+        el.style.transform = slam(el, lt, +el.dataset.slam, +(el.dataset.rot || 0));
+      });
+      sc.querySelectorAll('[data-char]').forEach(el => {
+        const d = +el.dataset.char;
+        const p = clamp((lt - d) / 0.35);
+        const y = lt < d ? 110 : (1 - backOut(p)) * 100;
+        const breathe = 1 + Math.sin(lt * 3) * 0.012;
+        el.style.transform = `translateY(${y}%) scale(${breathe})`;
+      });
+    });
+  };
+  render(0);
+</script>
+</body>
+</html>

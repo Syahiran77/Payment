@@ -6,3 +6,5 @@
 - `render.js` — jana MP4: `NODE_PATH=/opt/node-tools/node_modules node render.js 30 30`
 - `assets/` — letak `ss1.png`, `ss2.png` (tangkapan skrin sebenar), kemudian render semula
 - `output/bil_tnb_30s.mp4` — hasil (tanpa audio; tambah VO/muzik di CapCut)
+- `video_guna_sama.html` + `skrip_guna_sama.md` → `output/guna_sama_bil_naik_30s.mp4` (watak Pak Bil, `output/pak_bil_watak.png`)
+  Render: `NODE_PATH=/opt/node-tools/node_modules node render.js 30 30 video_guna_sama.html guna_sama_bil_naik`
