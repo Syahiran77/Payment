@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<title>Bil TNB 30s</title>
+<style>
+  :root {
+    --bg: #F7BD23; --ink: #151515; --paper: #fff; --alert: #E5432D; --ok: #1E9E5A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+  body { font-family: "Inter", "Inter Display", sans-serif; color: var(--ink); }
+  #stage {
+    position: relative; width: 1080px; height: 1920px; overflow: hidden;
+    background-color: var(--bg);
+    background-image:
+      linear-gradient(rgba(0,0,0,.06) 2px, transparent 2px),
+      linear-gradient(90deg, rgba(0,0,0,.06) 2px, transparent 2px);
+    background-size: 60px 60px;
+  }
+  .abs { position: absolute; }
+  .brand {
+    left: 64px; top: 300px; display: flex; align-items: center; gap: 18px;
+    font-weight: 800; font-size: 44px; letter-spacing: -.01em;
+  }
+  .brand .box {
+    width: 64px; height: 64px; border: 5px solid var(--ink); border-radius: 14px;
+    display: grid; place-items: center; font-size: 34px; font-weight: 900;
+  }
+  .doodle { right: 10px; top: 160px; }
+
+  .scene { position: absolute; inset: 0; display: none; }
+  .head {
+    position: absolute; left: 64px; right: 64px;
+    font-weight: 900; letter-spacing: -.035em; line-height: 1.02; font-size: 112px;
+  }
+  .w { display: inline-block; transform-origin: 50% 80%; margin-right: .22em; }
+  .key { font-size: 1.28em; }
+  .red { color: var(--alert); }
+  .green { color: var(--ok); }
+  .sub { font-weight: 800; font-size: 54px; letter-spacing: -.02em; }
+
+  .chip {
+    position: absolute; display: inline-flex; align-items: center; gap: 16px;
+    background: var(--paper); border: 5px solid var(--ink); border-radius: 999px;
+    padding: 18px 36px; font-weight: 800; font-size: 42px; white-space: nowrap;
+    box-shadow: 8px 8px 0 var(--ink);
+  }
+  .chip .ico {
+    width: 40px; height: 40px; border: 4px solid var(--ink); border-radius: 10px;
+    display: grid; place-items: center; font-size: 24px; font-weight: 900; flex: none;
+  }
+  .chip.num .ico { border-radius: 50%; background: var(--ink); color: var(--paper); width: 54px; height: 54px; font-size: 30px; }
+  .chip.alert { background: var(--alert); color: var(--paper); }
+  .chip.alert .ico { border-color: var(--paper); }
+  .chip.ok { background: var(--ok); color: var(--paper); }
+  .chip.ok .ico { border-color: var(--paper); }
+  .tick { color: var(--ok); font-weight: 900; font-size: 46px; margin-left: 6px; }
+
+  .phone {
+    position: absolute; width: 470px; height: 900px; border: 14px solid var(--ink);
+    border-radius: 56px; background: var(--paper); overflow: hidden;
+    box-shadow: 12px 12px 0 var(--ink);
+  }
+  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .phone .ph {
+    position: absolute; inset: 0; display: none; flex-direction: column; justify-content: center;
+    align-items: center; gap: 18px; text-align: center; padding: 40px;
+    background: repeating-linear-gradient(45deg, #f1f1f1 0 26px, #e4e4e4 26px 52px);
+    font-weight: 900; font-size: 40px; line-height: 1.15;
+  }
+  .phone .ph small { font-weight: 700; font-size: 28px; opacity: .7; }
+  .phone.missing img { display: none; }
+  .phone.missing .ph { display: flex; }
+
+  .char {
+    position: absolute; right: -20px; bottom: -10px; width: 600px; height: 900px;
+    transform-origin: 50% 100%;
+    filter: drop-shadow(10px 0 0 #fff) drop-shadow(-10px 0 0 #fff)
+            drop-shadow(0 10px 0 #fff) drop-shadow(0 -10px 0 #fff);
+  }
+  .char svg { width: 100%; height: 100%; overflow: visible; }
+  .arm-point, .arm-cheek, .arm-chin, .mouth-o, .smile { display: none; }
+  .pose-point .arm-point, .pose-point .smile { display: block; }
+  .pose-think .arm-chin, .pose-think .smile { display: block; }
+  .pose-shock .arm-cheek, .pose-shock .mouth-o { display: block; }
+  .pose-shock .brow { transform: translateY(-10px); }
+
+  .note { font-weight: 700; font-size: 26px; opacity: .6; }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- Elemen tetap -->
+  <div class="abs brand"><div class="box">✦</div><span>[Logo Anda]</span></div>
+  <svg class="abs doodle" width="300" height="230" viewBox="0 0 300 230" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round">
+    <path d="M30 120 L150 20"/><path d="M60 170 L210 40"/><path d="M110 200 L270 70"/>
+    <path d="M60 30 L200 200"/><path d="M130 20 L270 180"/><path d="M20 90 L240 110"/>
+  </svg>
+
+  <!-- S1 HOOK 0–3.2 -->
+  <div class="scene" data-t0="0" data-t1="3.2">
+    <div class="head" style="top:520px" data-words="0.05">Bil elektrik tiba-tiba</div>
+    <div class="head red" style="top:770px;font-size:190px" data-slam="0.55">RM387?!</div>
+    <div class="chip alert" style="left:64px;top:1030px" data-pop="1.0" data-rot="-3" data-float><span class="ico">!</span>Naik 2x ganda</div>
+    <div class="head sub" style="top:1200px" data-words="1.7">Jangan bayar dulu…</div>
+    <div class="char pose-shock" data-char="0.15"></div>
+  </div>
+
+  <!-- S2 RELATE 3.2–8 -->
+  <div class="scene" data-t0="3.2" data-t1="8">
+    <div class="head" style="top:440px" data-words="0">Rumah sama.</div>
+    <div class="head" style="top:565px" data-words="0.45">Guna sama.</div>
+    <div class="head" style="top:690px" data-words="0.9">Tapi bil <span class="key red">naik?</span></div>
+    <div class="chip" style="left:70px;top:950px"  data-pop="1.6" data-rot="-3" data-float><span class="ico">❄</span>Aircon</div>
+    <div class="chip" style="left:440px;top:930px" data-pop="1.75" data-rot="3" data-float><span class="ico">▤</span>Peti Sejuk</div>
+    <div class="chip" style="left:90px;top:1080px" data-pop="1.9" data-rot="2" data-float><span class="ico">♨</span>Water Heater</div>
+    <div class="chip" style="left:100px;top:1210px" data-pop="2.05" data-rot="-2" data-float><span class="ico">◎</span>Mesin Basuh</div>
+    <div class="chip" style="left:60px;top:1340px" data-pop="2.2" data-rot="3" data-float><span class="ico">≈</span>Pam Air</div>
+    <div class="head sub" style="top:1500px;width:520px" data-words="2.9">Rasa macam kena “tipu”?</div>
+    <div class="char pose-think" data-char="0.2"></div>
+  </div>
+
+  <!-- S3a SEMAK 1: 8–11 -->
+  <div class="scene" data-t0="8" data-t1="11">
+    <div class="head" style="top:440px;font-size:84px" data-words="0">3 cara <span class="key">semak</span> sendiri</div>
+    <div class="chip num" style="left:64px;top:660px" data-pop="0.35" data-rot="-2"><span class="ico">1</span>Banding bacaan meter vs bil</div>
+    <div class="phone" style="left:64px;top:820px" data-pop="0.6" data-rot="-3">
+      <img data-src="assets/ss1.png" alt="">
+      <div class="ph">GANTI<br>Tangkapan skrin bil<br><small>bacaan meter semasa &amp; sebelum<br>(assets/ss1.png)</small></div>
+    </div>
+    <div class="char pose-point" data-char="0.1"></div>
+  </div>
+
+  <!-- S3b SEMAK 2: 11–14 -->
+  <div class="scene" data-t0="11" data-t1="14">
+    <div class="head" style="top:440px;font-size:84px">3 cara <span class="key">semak</span> sendiri</div>
+    <div class="chip num" style="left:64px;top:660px" data-pop="0" data-rot="2"><span class="ico">2</span>Semak graf kWh di myTNB</div>
+    <div class="phone" style="left:64px;top:820px" data-pop="0.25" data-rot="3">
+      <img data-src="assets/ss2.png" alt="">
+      <div class="ph">GANTI<br>Tangkapan skrin app<br><small>graf penggunaan kWh<br>(assets/ss2.png)</small></div>
+    </div>
+    <div class="chip alert" style="left:300px;top:880px" data-pop="1.3" data-rot="-4" data-float><span class="ico">↑</span>Lonjakan luar biasa?</div>
+    <div class="char pose-think" data-char="0.1"></div>
+  </div>
+
+  <!-- S3c SEMAK 3: 14–17 -->
+  <div class="scene" data-t0="14" data-t1="17">
+    <div class="head" style="top:440px;font-size:84px">3 cara <span class="key">semak</span> sendiri</div>
+    <div class="chip num" style="left:64px;top:660px" data-pop="0" data-rot="-2"><span class="ico">3</span>Tutup semua suis</div>
+    <div class="head" style="top:830px;font-size:100px" data-words="0.4">Meter masih <span class="key">bergerak?</span></div>
+    <div class="chip alert" style="left:64px;top:1150px" data-slam="1.4" data-rot="-3"><span class="ico">!</span>Meter mungkin rosak</div>
+    <div class="char pose-shock" data-char="0.1"></div>
+  </div>
+
+  <!-- S4 SOP 17–25.5 -->
+  <div class="scene" data-t0="17" data-t1="25.5">
+    <div class="head sub" style="top:430px" data-words="0">Jangan risau, ini</div>
+    <div class="head" style="top:510px;font-size:84px" data-words="0.3">SOP Tukar <span class="key">Meter</span> TNB</div>
+    <div class="chip num" style="left:64px;top:700px"  data-pop="1.0" data-rot="-2" data-float><span class="ico">1</span>Lapor: myTNB / 15454<span class="tick" data-pop="2.4">✓</span></div>
+    <div class="chip num" style="left:64px;top:850px"  data-pop="2.6" data-rot="2"  data-float><span class="ico">2</span>TNB jadual lawatan<span class="tick" data-pop="4.0">✓</span></div>
+    <div class="chip num" style="left:64px;top:1000px" data-pop="4.2" data-rot="-2" data-float><span class="ico">3</span>Juruteknik uji &amp; tukar meter<span class="tick" data-pop="5.6">✓</span></div>
+    <div class="chip ok"  style="left:64px;top:1150px" data-slam="5.9" data-rot="2"><span class="ico">4</span>Bil diselaras jika meter rosak</div>
+    <div class="char pose-point" data-char="0.1" style="width:440px;height:660px"></div>
+  </div>
+
+  <!-- S5 CTA 25.5–30 -->
+  <div class="scene" data-t0="25.5" data-t1="30.01">
+    <div class="head" style="top:520px" data-words="0">Semak sebelum</div>
+    <div class="head" style="top:645px" data-slam="0.4"><span class="key">bayar!</span></div>
+    <div class="chip" style="left:80px;top:900px"  data-pop="1.0" data-rot="-3" data-float><span class="ico">⌑</span>Simpan</div>
+    <div class="chip" style="left:120px;top:1040px" data-pop="1.2" data-rot="2"  data-float><span class="ico">↗</span>Kongsi dengan family</div>
+    <div class="chip" style="left:70px;top:1180px" data-pop="1.4" data-rot="-2" data-float><span class="ico">+</span>Follow untuk tips bil</div>
+    <div class="abs note" style="left:64px;top:1780px">*Sahkan prosedur terkini dengan TNB</div>
+    <div class="char pose-point" data-char="0"></div>
+  </div>
+</div>
+
+<template id="char-tpl">
+<svg viewBox="0 0 400 600">
+  <!-- badan / kardigan -->
+  <path d="M60 600 C60 470 110 400 200 395 C290 400 340 470 340 600 Z" fill="#97AA93"/>
+  <path d="M150 410 L200 600 L250 410 Z" fill="#fff"/>
+  <path d="M150 600 L175 470 M250 600 L225 470" stroke="#7E9179" stroke-width="5"/>
+  <!-- tudung -->
+  <path d="M95 200 C95 90 305 90 305 200 L320 330 C330 400 290 450 200 455 C110 450 70 400 80 330 Z" fill="#D88A80"/>
+  <path d="M270 300 C320 360 330 470 300 560 L260 560 C280 470 270 400 240 360 Z" fill="#C97A70"/>
+  <!-- muka -->
+  <ellipse cx="200" cy="230" rx="78" ry="92" fill="#F1C7A3"/>
+  <path d="M118 190 C130 120 270 120 282 190 C250 150 150 150 118 190 Z" fill="#D88A80"/>
+  <!-- kening -->
+  <g class="brow" stroke="#5A3A2A" stroke-width="6" stroke-linecap="round">
+    <path d="M150 188 Q165 180 180 186"/><path d="M220 186 Q235 180 250 188"/>
+  </g>
+  <!-- cermin mata -->
+  <g fill="none" stroke="#3A2A22" stroke-width="7">
+    <rect x="140" y="200" width="52" height="42" rx="14"/><rect x="208" y="200" width="52" height="42" rx="14"/>
+    <path d="M192 216 L208 216"/>
+  </g>
+  <circle cx="166" cy="222" r="7" fill="#2A1C16"/><circle cx="234" cy="222" r="7" fill="#2A1C16"/>
+  <!-- hidung & pipi -->
+  <path d="M200 240 Q194 262 204 266" fill="none" stroke="#C99877" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="148" cy="268" r="12" fill="#EBA58F" opacity=".6"/><circle cx="252" cy="268" r="12" fill="#EBA58F" opacity=".6"/>
+  <!-- mulut -->
+  <path class="smile" d="M170 285 Q200 312 230 285" fill="#fff" stroke="#8C3B33" stroke-width="6" stroke-linecap="round"/>
+  <ellipse class="mouth-o" cx="200" cy="292" rx="16" ry="20" fill="#8C3B33"/>
+  <!-- tangan tunjuk ke atas -->
+  <g class="arm-point">
+    <path d="M110 600 C90 520 80 470 95 420 L135 430 C130 480 140 520 160 600 Z" fill="#97AA93"/>
+    <path d="M88 425 C80 395 92 370 115 370 C138 372 145 395 140 425 Z" fill="#F1C7A3"/>
+    <rect x="104" y="270" width="24" height="115" rx="12" fill="#F1C7A3"/>
+  </g>
+  <!-- tangan di pipi (terkejut) -->
+  <g class="arm-cheek">
+    <path d="M95 600 C80 500 90 420 120 360 L155 375 C135 430 130 500 145 600 Z" fill="#97AA93"/>
+    <ellipse cx="135" cy="315" rx="30" ry="42" fill="#F1C7A3"/>
+    <path d="M305 600 C320 500 310 420 280 360 L245 375 C265 430 270 500 255 600 Z" fill="#97AA93"/>
+    <ellipse cx="265" cy="315" rx="30" ry="42" fill="#F1C7A3"/>
+  </g>
+  <!-- tangan di dagu (berfikir) -->
+  <g class="arm-chin">
+    <path d="M150 600 C140 520 160 430 200 380 L230 400 C200 440 190 510 195 600 Z" fill="#97AA93"/>
+    <ellipse cx="215" cy="345" rx="34" ry="28" fill="#F1C7A3"/>
+  </g>
+</svg>
+</template>
+
+<script>
+  // --- Enjin animasi deterministik: render(t) melukis frame pada masa t (saat) ---
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const backOut = p => { const c = 1.9; p -= 1; return 1 + (c + 1) * p * p * p + c * p * p; };
+  const tpl = document.getElementById('char-tpl').innerHTML;
+  document.querySelectorAll('[data-char]').forEach(el => el.innerHTML = tpl);
+
+  // pecah tajuk kepada perkataan (kekalkan span .key)
+  document.querySelectorAll('[data-words]').forEach(el => {
+    const parts = [];
+    el.childNodes.forEach(n => {
+      if (n.nodeType === 3) n.textContent.split(/\s+/).filter(Boolean).forEach(w => parts.push({ text: w }));
+      else parts.push({ node: n });
+    });
+    el.innerHTML = '';
+    parts.forEach(p => {
+      const s = document.createElement('span'); s.className = 'w';
+      if (p.node) { s.appendChild(p.node); } else s.textContent = p.text;
+      el.appendChild(s);
+    });
+  });
+
+  // gambar tangkapan skrin: guna jika wujud, jika tidak tunjuk kotak GANTI
+  const imgs = [...document.querySelectorAll('img[data-src]')];
+  window.assetsReady = Promise.all(imgs.map(img => new Promise(res => {
+    img.onload = () => res(); img.onerror = () => { img.closest('.phone').classList.add('missing'); res(); };
+    img.src = img.dataset.src;
+  })));
+
+  const scenes = [...document.querySelectorAll('.scene')];
+
+  function pop(el, lt, d, rot) {
+    const p = clamp((lt - d) / 0.3);
+    const s = lt < d ? 0 : backOut(p);
+    el.style.opacity = lt < d ? 0 : 1;
+    return `scale(${s}) rotate(${rot}deg)`;
+  }
+  function slam(el, lt, d, rot) {
+    if (lt < d) { el.style.opacity = 0; return 'scale(0)'; }
+    el.style.opacity = 1;
+    const p = clamp((lt - d) / 0.2);
+    const s = 1.8 - 0.8 * p;
+    const shake = lt - d < 0.45 && p >= 1 ? Math.sin((lt - d) * 70) * 8 * (1 - (lt - d) / 0.45) : 0;
+    return `translateX(${shake}px) scale(${s}) rotate(${rot}deg)`;
+  }
+
+  window.render = function (t) {
+    scenes.forEach((sc, si) => {
+      const t0 = +sc.dataset.t0, t1 = +sc.dataset.t1;
+      const on = t >= t0 && t < t1;
+      sc.style.display = on ? 'block' : 'none';
+      if (!on) return;
+      const lt = t - t0;
+
+      sc.querySelectorAll('[data-words]').forEach(el => {
+        const d = +el.dataset.words;
+        [...el.children].forEach((w, i) => { w.style.transform = pop(w, lt, d + i * 0.08, 0); });
+      });
+      sc.querySelectorAll('[data-pop]').forEach((el, i) => {
+        const rot = +(el.dataset.rot || 0);
+        let tr = pop(el, lt, +el.dataset.pop, rot);
+        if (el.hasAttribute('data-float')) tr = `translateY(${Math.sin(lt * Math.PI + i * 1.7) * 5}px) ` + tr;
+        el.style.transform = tr;
+      });
+      sc.querySelectorAll('[data-slam]').forEach(el => {
+        el.style.transform = slam(el, lt, +el.dataset.slam, +(el.dataset.rot || 0));
+      });
+      sc.querySelectorAll('[data-char]').forEach(el => {
+        const d = +el.dataset.char;
+        const p = clamp((lt - d) / 0.35);
+        const y = lt < d ? 110 : (1 - backOut(p)) * 100;
+        const breathe = 1 + Math.sin(lt * 3) * 0.012;
+        el.style.transform = `translateY(${y}%) scale(${breathe})`;
+      });
+    });
+  };
+  render(0);
+</script>
+</body>
+</html>
